@@ -26,7 +26,6 @@ It helps teams organize, assign, and track tasks efficiently with real-time upda
 * React.js
 * @hello-pangea/dnd (Drag & Drop)
 * Recharts (Analytics)
-* Custom UI (Parchment + Indigo theme)
 
 ### Backend
 
