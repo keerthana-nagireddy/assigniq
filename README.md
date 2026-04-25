@@ -38,7 +38,6 @@ It helps teams organize, assign, and track tasks efficiently with real-time upda
 
 ## 📁 Project Structure
 
-```
 assigniq/
 ├── assigniq-frontend/
 │   ├── src/
@@ -52,11 +51,20 @@ assigniq/
 ├── assigniq-backend/
 │   ├── server.js
 │   ├── package.json
-```
 
 ---
 
-## ⚙️ How to Run the Project
+## ⚙️ Requirements
+
+Before running this project, make sure you have:
+
+* ✅ Node.js installed
+* ✅ PostgreSQL installed
+* ✅ Git installed
+
+---
+
+## 🚀 How to Run the Project
 
 ### 1️⃣ Clone the repository
 
@@ -67,41 +75,16 @@ cd assigniq
 
 ---
 
-### 2️⃣ Run Backend
+## 🗄 Step 2: Setup PostgreSQL Database
 
-```bash
-cd assigniq-backend
-npm install
-node server.js
-```
-
-Server runs at:
-👉 http://localhost:5000
-
----
-
-### 3️⃣ Run Frontend
-
-```bash
-cd assigniq-frontend
-npm install
-npm start
-```
-
-App runs at:
-👉 http://localhost:3000
-
----
-
-## 🗄 Database Setup (PostgreSQL)
-
-Create a database:
+1. Open PostgreSQL
+2. Create a database named:
 
 ```
 assigniq
 ```
 
-Create the `tasks` table:
+3. Create the `tasks` table:
 
 ```sql
 CREATE TABLE tasks (
@@ -115,24 +98,62 @@ CREATE TABLE tasks (
 );
 ```
 
+4. Open `assigniq-backend/server.js` and update database credentials:
+
+```js
+const pool = new Pool({
+  user: "your_postgres_user",
+  host: "localhost",
+  database: "assigniq",
+  password: "your_password",
+  port: 5432,
+});
+```
+
+⚠️ Important: Update `user` and `password` based on your system
+
+---
+
+## 🔧 Step 3: Run Backend
+
+```bash
+cd assigniq-backend
+npm install
+node server.js
+```
+
+👉 Backend runs at: http://localhost:5000
+
+---
+
+## 🎨 Step 4: Run Frontend
+
+```bash
+cd assigniq-frontend
+npm install
+npm start
+```
+
+👉 Frontend runs at: http://localhost:3000
+
 ---
 
 ## 🧠 How It Works
 
 * Tasks are created from the frontend
 * Backend stores them in PostgreSQL
-* Smart assignment logic (`utils/assignTask.js`) assigns tasks to team members
-* Socket.io ensures real-time updates across users
+* Tasks are automatically assigned using `assignTask.js`
+* Socket.io enables real-time updates
 * Drag & drop updates task status instantly
 
 ---
 
-## 📌 Notes
+## 📌 Important Notes
 
-* Backend runs locally on PostgreSQL
-* Frontend communicates with backend via `http://localhost:5000`
-* Real-time sync handled using Socket.io
-* No authentication system is implemented yet
+* Backend must be running before frontend
+* PostgreSQL must be running locally
+* Frontend connects to backend using `http://localhost:5000`
+* If database is not configured correctly, the app will not work
 
 ---
 
